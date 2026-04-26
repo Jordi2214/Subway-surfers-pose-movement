@@ -1,0 +1,154 @@
+/* Global Styles */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+body {
+    margin: 0;
+    overflow: hidden; /* Typical for WebGL games */
+}
+
+/* Pose UI Container */
+#pose-ui-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 260px;
+    background: rgba(15, 23, 42, 0.65);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 16px;
+    padding: 16px;
+    color: #f8fafc;
+    font-family: 'Inter', sans-serif;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(255,255,255,0.1);
+    z-index: 9999;
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    pointer-events: none; /* Let clicks pass through to game if needed, though UI is small */
+}
+
+#pose-ui-container.pose-ui-visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+}
+
+/* Video & Canvas Overlay */
+.video-container {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4/3;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #0f172a;
+    margin-bottom: 16px;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.1);
+}
+
+#webcam-video, #pose-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: scaleX(-1); /* Mirror effect like a selfie */
+    object-fit: cover;
+}
+
+/* Prediction Bars */
+.predictions-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.pred-row {
+    display: flex;
+    align-items: center;
+}
+
+.pred-label {
+    width: 65px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #cbd5e1;
+}
+
+.bar-track {
+    flex: 1;
+    position: relative;
+    height: 14px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 7px;
+    margin-right: 30px; /* Leave space for the text at 100% */
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.2);
+}
+
+.bar-fill {
+    height: 100%;
+    width: 0%;
+    border-radius: 7px;
+    transition: width 0.15s linear, opacity 0.2s ease;
+}
+
+.pred-text {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0%; /* Changed dynamically */
+    margin-left: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+    transition: left 0.15s linear;
+    white-space: nowrap;
+}
+
+/* Gradients for bars to look premium */
+.bg-amunt { background: linear-gradient(90deg, #10b981, #34d399); box-shadow: 0 0 8px rgba(52,211,153,0.5); }
+.bg-dreta { background: linear-gradient(90deg, #3b82f6, #60a5fa); box-shadow: 0 0 8px rgba(96,165,250,0.5); }
+.bg-esquerra { background: linear-gradient(90deg, #f59e0b, #fbbf24); box-shadow: 0 0 8px rgba(251,191,36,0.5); }
+.bg-ajupit { background: linear-gradient(90deg, #ef4444, #f87171); box-shadow: 0 0 8px rgba(248,113,113,0.5); }
+.bg-standby { background: linear-gradient(90deg, #64748b, #94a3b8); box-shadow: 0 0 8px rgba(148,163,184,0.5); }
+
+/* Debug Text */
+#debug-text {
+    margin-top: 14px;
+    font-size: 11px;
+    color: #94a3b8;
+    text-align: center;
+    font-family: monospace;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+/* Responsive Scaling for small screens */
+@media (max-width: 768px) {
+    #pose-ui-container {
+        width: 180px;
+        padding: 10px;
+        bottom: 10px;
+        right: 10px;
+    }
+    .video-container {
+        margin-bottom: 10px;
+    }
+    .pred-label {
+        font-size: 9px;
+        width: 50px;
+    }
+    .bar-track {
+        height: 10px;
+        margin-right: 25px;
+    }
+    .pred-text {
+        font-size: 9px;
+    }
+    #debug-text {
+        font-size: 9px;
+    }
+}
