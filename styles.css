@@ -108,10 +108,10 @@ body {
 }
 
 /* Gradients for bars to look premium */
-.bg-amunt { background: linear-gradient(90deg, #10b981, #34d399); box-shadow: 0 0 8px rgba(52,211,153,0.5); }
-.bg-dreta { background: linear-gradient(90deg, #3b82f6, #60a5fa); box-shadow: 0 0 8px rgba(96,165,250,0.5); }
-.bg-esquerra { background: linear-gradient(90deg, #f59e0b, #fbbf24); box-shadow: 0 0 8px rgba(251,191,36,0.5); }
-.bg-ajupit { background: linear-gradient(90deg, #ef4444, #f87171); box-shadow: 0 0 8px rgba(248,113,113,0.5); }
+.bg-up { background: linear-gradient(90deg, #10b981, #34d399); box-shadow: 0 0 8px rgba(52,211,153,0.5); }
+.bg-right { background: linear-gradient(90deg, #3b82f6, #60a5fa); box-shadow: 0 0 8px rgba(96,165,250,0.5); }
+.bg-left { background: linear-gradient(90deg, #f59e0b, #fbbf24); box-shadow: 0 0 8px rgba(251,191,36,0.5); }
+.bg-down { background: linear-gradient(90deg, #ef4444, #f87171); box-shadow: 0 0 8px rgba(248,113,113,0.5); }
 .bg-standby { background: linear-gradient(90deg, #64748b, #94a3b8); box-shadow: 0 0 8px rgba(148,163,184,0.5); }
 
 /* Debug Text */

@@ -8,7 +8,7 @@
 window.poseAction = "idle";
 window.poseConfidence = 0;
 
-const CLASSES = ["Amunt", "Dreta", "Esquerra", "Ajupit", "Standby"];
+const CLASSES = ["Up", "Right", "Left", "Down", "Standby"];
 
 // Store the latest pose data
 let currentPose = null;
@@ -16,10 +16,10 @@ let currentPredictions = null;
 let isModelConnected = false;
 
 const KEY_MAP = {
-    "Amunt": { key: "ArrowUp", code: "ArrowUp", keyCode: 38 },
-    "Ajupit": { key: "ArrowDown", code: "ArrowDown", keyCode: 40 },
-    "Esquerra": { key: "ArrowLeft", code: "ArrowLeft", keyCode: 37 },
-    "Dreta": { key: "ArrowRight", code: "ArrowRight", keyCode: 39 },
+    "Up": { key: "ArrowUp", code: "ArrowUp", keyCode: 38 },
+    "Down": { key: "ArrowDown", code: "ArrowDown", keyCode: 40 },
+    "Left": { key: "ArrowLeft", code: "ArrowLeft", keyCode: 37 },
+    "Right": { key: "ArrowRight", code: "ArrowRight", keyCode: 39 },
 };
 
 let activeKeyInfo = null;
@@ -250,10 +250,10 @@ function simulateLoadingBars() {
     // We only simulate UI animation, we DO NOT call setPoseAction
     // so the game remains completely idle until real model loads.
     let fakePreds = {
-        "Amunt": (Math.sin(t) * 0.5 + 0.5) * 0.1,
-        "Dreta": (Math.cos(t) * 0.5 + 0.5) * 0.1,
-        "Esquerra": (Math.sin(t + 2) * 0.5 + 0.5) * 0.1,
-        "Ajupit": (Math.cos(t + 2) * 0.5 + 0.5) * 0.1,
+        "Up": (Math.sin(t) * 0.5 + 0.5) * 0.1,
+        "Right": (Math.cos(t) * 0.5 + 0.5) * 0.1,
+        "Left": (Math.sin(t + 2) * 0.5 + 0.5) * 0.1,
+        "Down": (Math.cos(t + 2) * 0.5 + 0.5) * 0.1,
         "Standby": (Math.sin(t * 0.5) * 0.2 + 0.8) // Keeps standby high
     };
 

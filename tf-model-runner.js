@@ -38,14 +38,10 @@ async function predictLoop() {
             const prediction = await tfModel.predict(posenetOutput);
 
             // Reconstruct the array output into a dictionary map for our UI
-            // We swap 'Dreta' and 'Esquerra' here to counteract the webcam mirror effect
+            // The model itself (metadata.json) has now been configured to output English and mirrored directions natively
             let predictionMap = {};
             for (let i = 0; i < maxPredictions; i++) {
-                let className = prediction[i].className;
-                if (className === "Dreta") className = "Esquerra";
-                else if (className === "Esquerra") className = "Dreta";
-                
-                predictionMap[className] = prediction[i].probability;
+                predictionMap[prediction[i].className] = prediction[i].probability;
             }
 
             // Pipe the data to the onPoseUpdate hook we defined in pose-ui.js
